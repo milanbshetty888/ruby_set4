@@ -53,15 +53,34 @@ class User < Message
 	end
 
 	def sendSecureMessage
-		secureChat("This is confidential")
+		begin
+			obj1 = Message.new
+			obj1.secureChat("This is confidential")
+		rescue => e1
+			puts "client should not be able to call the secureChat"
+		end
 	end
 
 	def sendPersonalMessage
-		personalChat("Hi, how are you?")
+		 
+			obj2 = Message.new
+			obj2.personalChat("Hi, how are you?")
+		
 	end
 end
 
+#  required output
+	
+	# send message 'Hi friends' to the public group
+		# output ->  This is a Public Group
+							 # Hi Friends
 
+	# output --> This is a Personal Chat
+						 	 # Hi, how are you?
+
+	# client should not be able to call the secureChat 
 
 client = User.new
-
+client.groupChat("Hi Friends")
+client.sendPersonalMessage
+client.sendSecureMessage

@@ -6,19 +6,18 @@
 
 class Lottery
 
-  def initialize
+  def initialize(list)
+  	@gift = {1 => "pen", 2 => "box", 3 =>"pencil", 4 =>"car", 5 =>"bike", 6=>"cycle", 7 =>"house", 8 =>"laptop", 9=>"shoes", 10 =>"dress"}
+  	@list = list
   end
 
   def method_name
-    
+    puts @gift[@list]
   end
 end
 
-@gifts ={
-	key, value,
-	key,value
-}
+puts 'Inut From the user'
+number = gets
 
-number = 'Inut From the user'
-prize = Lottery.new(number)
-puts prize
+prize = Lottery.new(number.to_i)
+prize.method_name
